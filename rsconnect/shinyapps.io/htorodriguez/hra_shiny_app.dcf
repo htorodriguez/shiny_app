@@ -1,0 +1,13 @@
+name: hra_shiny_app
+title: hra_shiny_app
+username:
+account: htorodriguez
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 279489
+bundleId: 1220152
+url: https://htorodriguez.shinyapps.io/hra_shiny_app/
+when: 1518481859.12403
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Li_ion_pitch.md|Li_ion_pitch.Rpres|Li_ion_shinyapp.html|Li_ion_shinyapp.Rmd|Data/BatteryAgingARC-FY08Q4.zip|Data/BatteryAgingARC-FY08Q4/B0005.mat|Data/BatteryAgingARC-FY08Q4/B0006.mat|Data/BatteryAgingARC-FY08Q4/B0007.mat|Data/BatteryAgingARC-FY08Q4/B0018.mat|Data/BatteryAgingARC-FY08Q4/README.txt|Li_ion_pitch-figure/unnamed-chunk-1-1.png|Li_ion_pitch-figure/unnamed-chunk-2-1.png|Li_ion_pitch-figure/unnamed-chunk-3-1.png

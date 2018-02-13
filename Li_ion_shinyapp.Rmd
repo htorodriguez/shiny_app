@@ -1,0 +1,45 @@
+---
+title: "Li_ion_shinyapp"
+author: "H. Rodriguez Alvarez"
+date: "11 Februar 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Predicting the lifetime of a Li-ion battery
+
+This app will predict the capacity retention of a Li-ion Battery, based on simulated measurements. The objective of the app is to show how the noise in the measurement affects the prediction algorithm. This app assume that you have measured the capacity fade of 4 different cells at different temperatures and with different impedances. The cells you have in your virtual lab are
+
+```{r, echo=FALSE}
+cell1<-data.frame("cell"="cell_1", "cycle"=1:200, "Temperature"= 293, "Impedance"=4)
+cell2<-data.frame("cell"="cell_2", "cycle"=1:200, "Temperature"= 273, "Impedance"=2)
+cell3<-data.frame("cell"="cell_3", "cycle"=1:200, "Temperature"= 273, "Impedance"=5)
+cell4<-data.frame("cell"="cell_4", "cycle"=1:200, "Temperature"= 315, "Impedance"=3)
+cells<-rbind(cell1, cell2, cell3, cell4)
+
+unique(cells[,c("cell", "Temperature", "Impedance")])
+
+```
+
+
+In your virtual lab, you can use different equipment resulting in different noise in your measurement 
+
+### Input
+
+The first input of your virtual experiment is the noise in your measurements. To set this just set the corresponding value in the slider
+
+Now you can see how your virtual measurements would look like. In the slider pnale you also see a table that summarizes your measured cells.
+
+Your measured cells are the bases for a regression model that runs in the background.
+
+Now, you wish to predict the capacity fade out for a given cell, based on you measurements. YOu can input the temperature and the impedance for the cell that you wish to predict. Use the sliders for this.
+
+### Output
+
+The main output is the prediction of the capacity fade out of your desired cell in the second plot from top to bottom. We have also plotted the 'real' capacity fade. You can check that the model gets pretty close to the real fade, if 1) you remain within the temperature and impedance boundaries of your measurements, and 2) the noise is low, to help you with a better fit. 
+
+You can also see, that a linear model, is really not satisfactory to describe the fade out.
+

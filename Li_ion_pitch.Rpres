@@ -1,0 +1,68 @@
+Predict the capacity fade of your Li-ion battery
+========================================================
+author: H. Rodriguez Alvarez
+date: 11.02.2018
+autosize: true
+
+How many times did you changed your cell phone battery last year?
+========================================================
+
+How about knowing how long cell phone battery will last...
+
+- ... it will save you money
+- ...  and it will save you troubles with your partner...
+- Impossible?
+
+Possible...
+========================================================
+
+The capacity fade of all batteries looks something like this
+
+```{r, echo=FALSE}
+capacity<-function(cycle, impedance, temperature, noise){
+        c<-numeric(length(cycle))
+        for (i in 1:length(cycle)){
+                c[i]<-100*exp(-cycle[i]/100/impedance[i])*exp(-10/temperature[i])*rnorm(1, mean = 1, sd=noise[i])
+        }        
+        c
+}
+
+capa<-capacity(1:200, rep(4, 200), rep(273, 200), rep(0.01, 200))
+
+plot(capa, xlab="Charge/Discharge Cycle", ylab="Capacity retention in %")
+
+```
+
+
+Virtual Lab
+========================================================
+To determine the best prediction model we setup a virtual lab. In your virtual lab you have 
+
+- 4 cells with different impedances measured at different temperatures
+- different equipment with which you can measure the capactiy fade 
+
+```{r, echo=FALSE, eval=FALSE}
+cell1<-data.frame("cell"="cell_1", "cycle"=1:200, "Temperature"= 293, "Impedance"=4)
+cell2<-data.frame("cell"="cell_2", "cycle"=1:200, "Temperature"= 273, "Impedance"=2)
+cell3<-data.frame("cell"="cell_3", "cycle"=1:200, "Temperature"= 273, "Impedance"=5)
+cell4<-data.frame("cell"="cell_4", "cycle"=1:200, "Temperature"= 315, "Impedance"=3)
+cells<-rbind(cell1, cell2, cell3, cell4)
+
+unique(cells[,c("cell", "Temperature", "Impedance")])
+
+```
+
+The Li-ion app will make  for you a prediction based on your data for cell you want!
+
+
+Output
+========================================================
+
+For a given 
+
+- impedance (you can read this from the internet)
+- temperature (planning a vacation at the beach?)
+
+you can now determine what is the expected capacity fade. Furthermore you can also determine what is the necessary accuracy of you measuring equipment to make the best prediction.
+
+ So now jsut go to your convenience store and get you battery!
