@@ -7,8 +7,20 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Predicting the lifetime of a Li-ion battery"),
   h4("This app will predict the capacity retention of a Li-ion battery, based on virtual measurements"),
-  h4("The objective is to see what is the influence of the noise of the measurement on the prediction quality"),
-
+  h5("Description"),
+  h6("This app will predict the capacity retention of a Li-ion Battery,
+        based on simulated measurements. The objective of the app is to
+        show how the noise in the measurement affects the prediction algorithm.
+        This app assume that you have measured the capacity fade of 4 different cells
+        at different temperatures and with different impedances. The cells you have in
+        your virtual lab are displayed in the side bar. In your virtual lab, you can 
+        use different equipment resulting in different noise in your measurement"),
+  h5("Input"),
+  h6("The first input of your virtual experiment is the noise in your measurements.
+     Your measured cells are the bases for a regression model that runs in the background."),
+  h5("Output"),
+  h6("The main output is the prediction of the capacity fade out of your desired cell in the second plot. 
+     We have also plotted the real capacity fade."),
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
